@@ -1,4 +1,9 @@
+import { mint } from "./Web3Service"
+
 function App() {
+  const onBtnClick = () => {
+    mint()
+  }
   return (
     <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header className="mb-auto">
@@ -32,6 +37,7 @@ function App() {
           <a
             href="#"
             className="btn btn-lg btn-light fw-bold border-white bg-white"
+            onClick={onBtnClick}
           >
             <img
               src="/assets/metamask.svg"
