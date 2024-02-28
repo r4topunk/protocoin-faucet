@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header className="mb-auto">
+        <div>
+          <h3 className="float-md-start mb-0">ProtoCoin faucet</h3>
+          <nav className="nav nav-masthead justify-content-center float-md-end">
+            <a
+              className="nav-link fw-bold py-1 px-0 active"
+              aria-current="page"
+              href="/"
+            >
+              Home
+            </a>
+            <a className="nav-link fw-bold py-1 px-0" href="/about">
+              About
+            </a>
+          </nav>
+        </div>
       </header>
+
+      <main className="px-3">
+        <h1>Get your ProtoCoins.</h1>
+        <p
+          className="lead"
+          style={{ paddingInline: "64px", paddingBlock: "16px" }}
+        >
+          Onde a day, earn 100 coins for free just connecting your MetaMask
+          below.
+        </p>
+        <p className="lead">
+          <a
+            href="#"
+            className="btn btn-lg btn-light fw-bold border-white bg-white"
+          >
+            <img
+              src="/assets/metamask.svg"
+              alt="MetaMask logo"
+              width={28}
+              style={{ marginRight: "8px" }}
+            />
+            Connect wallet
+          </a>
+        </p>
+      </main>
+
+      <footer className="mt-auto text-white-50">
+        <p>
+          Built by{" "}
+          <a href="https://twitter.com/r4topunk" className="text-white">
+            @r4topunk
+          </a>
+          .
+        </p>
+      </footer>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
