@@ -8,7 +8,12 @@ function App() {
     setMessage("Requesting your tokens... Wait!")
     mint()
       .then((txHash) => setMessage(`Your tokens were sent. Tx: ${txHash}`))
-      .catch((err) => setMessage(err.message))
+      .catch((err) => {
+        console.error(err)
+        setMessage(
+          err.response ? JSON.stringify(err.response.data) : err.message
+        )
+      })
   }
   return (
     <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
