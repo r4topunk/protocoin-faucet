@@ -1,8 +1,10 @@
 import { mint } from "./Web3Service"
 
 function App() {
-  const onBtnClick = () => {
+  function onBtnClick() {
     mint()
+      .then((account) => alert(account))
+      .catch((message) => alert(message))
   }
   return (
     <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
