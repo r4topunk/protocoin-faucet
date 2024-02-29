@@ -1,19 +1,26 @@
 import { useState } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 import { mint } from "./Web3Service"
 
 function App() {
   const [message, setMessage] = useState("")
+  const [captcha, setCaptcha] = useState("")
 
   function onBtnClick() {
-    setMessage("Requesting your tokens... Wait!")
-    mint()
-      .then((txHash) => setMessage(`Your tokens were sent. Tx: ${txHash}`))
-      .catch((err) => {
-        console.error(err)
-        setMessage(
-          err.response ? JSON.stringify(err.response.data) : err.message
-        )
-      })
+    if (captcha) {
+      setMessage("Requesting your tokens... Wait!")
+      mint()
+        .then((txHash) => setMessage(`Your tokens were sent. Tx: ${txHash}`))
+        .catch((err) => {
+          console.error(err)
+          setMessage(
+            err.response ? JSON.stringify(err.response.data) : err.message
+          )
+        })
+      setCaptcha("")
+    } else {
+      setMessage("Check the `I am not robot first.")
+    }
   }
   return (
     <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
@@ -59,6 +66,14 @@ function App() {
             Connect wallet
           </a>
         </p>
+
+        <div style={{ display: "inline-flex" }}>
+          <ReCAPTCHA
+            sitekey={`${process.env.REACT_APP_RECAPTCHA_KEY}`}
+            onChange={(value) => setCaptcha(value || "")}
+          />
+        </div>
+
         <p className="lead">{message}</p>
       </main>
 
