@@ -1,10 +1,14 @@
+import { useState } from "react"
 import { mint } from "./Web3Service"
 
 function App() {
+  const [message, setMessage] = useState("")
+
   function onBtnClick() {
+    setMessage("Requesting your tokens... Wait!")
     mint()
-      .then((account) => alert(account))
-      .catch((message) => alert(message))
+      .then((txHash) => setMessage(`Your tokens were sent. Tx: ${txHash}`))
+      .catch((err) => setMessage(err.message))
   }
   return (
     <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
@@ -50,6 +54,7 @@ function App() {
             Connect wallet
           </a>
         </p>
+        <p className="lead">{message}</p>
       </main>
 
       <footer className="mt-auto text-white-50">
