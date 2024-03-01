@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import { useState } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { mint } from "./Web3Service"
