@@ -3,11 +3,13 @@ dotenv.config()
 
 import cors from "cors"
 import express, { NextFunction, Request, Response } from "express"
+import helmet from "helmet"
 import morgan from "morgan"
 import { mintAndTransfer } from "./Web3Provider"
 
 const app = express()
 app.use(morgan("tiny"))
+app.use(helmet())
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN || "*",
