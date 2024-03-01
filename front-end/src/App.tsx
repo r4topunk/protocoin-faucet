@@ -21,7 +21,7 @@ function App() {
         })
       setCaptcha("")
     } else {
-      setMessage("Check the `I am not robot first.")
+      setMessage("Check the `I am not a robot` first.")
     }
   }
   return (
